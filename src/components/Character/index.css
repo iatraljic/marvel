@@ -1,0 +1,9 @@
+.character {
+  background-color: whitesmoke;
+  border: white 2px solid;
+  border-radius: 8px;
+  text-align: center;
+  padding: 8px;
+  margin: 2px;
+  box-shadow: 1px 1px 4px 0px #cccccc;
+}
