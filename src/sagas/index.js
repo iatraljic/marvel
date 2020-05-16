@@ -1,12 +1,18 @@
 import {
-  put, fork, take
+  call,
+  put,
+  fork,
+  take
 } from 'redux-saga/effects';
+import getCharacters from '../api';
 import {
-  INPUT_VALUE_ASYNC
+  INPUT_VALUE_ASYNC,
+  inputValueSuccess
 } from '../actions';
 
 function* inputReducerTrigger(keyword) {
-  yield put({type: 'INPUT_VALUE', payload: keyword});
+  const characters = yield call(getCharacters, keyword);
+  yield put(inputValueSuccess(characters));
 }
 
 function* inputWatcher() {
@@ -14,12 +20,9 @@ function* inputWatcher() {
     const {
       payload
     } = yield take(INPUT_VALUE_ASYNC);
-
     yield fork(inputReducerTrigger, payload);
   }
 }
-
 export default function* rootSaga() {
-  
   yield fork(inputWatcher);
 }
