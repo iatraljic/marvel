@@ -1,13 +1,13 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import { inputValue } from '../../actions';
+import { inputValueAsync } from '../../actions';
 
 function SearchBar() {
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
-    dispatch(inputValue(e.target.value));
+    dispatch(inputValueAsync(e.target.value));
   };
 
   return (
