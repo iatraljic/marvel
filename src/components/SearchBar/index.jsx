@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 
 import { inputValueAsync } from '../../actions';
 
+import './index.css';
+
 function SearchBar() {
   const dispatch = useDispatch();
 

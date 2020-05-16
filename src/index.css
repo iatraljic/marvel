@@ -20,18 +20,18 @@ code {
   flex-wrap: wrap;
 }
 
-.col-1 {
+.col {
   flex-basis: 25%;
 }
 
 @media (max-width: 767px) {
-  .t-col-2 {
+  .t-col {
     flex-basis: 50%;
   }
 }
 
 @media (max-width: 480px) {
-  .m-col-4 {
+  .m-col {
     flex-basis: 100%;
   }
 }

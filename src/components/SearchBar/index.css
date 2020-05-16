@@ -1,12 +1,15 @@
 .search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
+  height: 20vh;
 }
 
 .sb-input {
   border: 0;
-  width: 100%;
+  width: 40vw;
   padding-bottom: 0.4375rem;
-  padding-left: 1.875rem;
   border-radius: 0;
   font-family: 'Roboto Condensed', sans-serif;
   font-weight: bold;
