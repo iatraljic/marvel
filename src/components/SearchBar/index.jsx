@@ -1,10 +1,14 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+
+import { inputValue } from '../../actions';
 
 function SearchBar() {
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
-    console.log(e.target.value);
-  }
+    dispatch(inputValue(e.target.value));
+  };
 
   return (
     <div className="search-bar">

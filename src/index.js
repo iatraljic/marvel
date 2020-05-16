@@ -1,11 +1,27 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import logger from 'redux-logger';
+
+import rootReducer from './reducers';
+
 import './index.css';
 import App from './App';
 
+
+function setStore() {
+  const store = createStore(
+    rootReducer,
+    applyMiddleware(logger)
+  );
+  return store;
+};
+
+
 render(
-  <React.StrictMode>
+  <Provider store={setStore()}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
