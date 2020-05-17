@@ -1,10 +1,17 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { inputValueAsync } from '../../actions';
 
 import Character from '../Character';
 
 function Grid() {
   const characters = useSelector(store => store.searchReducer.results);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(inputValueAsync(''));
+  }, []);
 
   console.log(characters);
 

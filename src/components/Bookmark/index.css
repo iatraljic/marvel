@@ -1,0 +1,15 @@
+.icon-bookmark {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  fill: none;
+  stroke: #555555;
+  stroke-width: 2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  z-index: 50;
+}
+
+.icon-bookmark.active {
+  stroke: #ffffff;
+}
