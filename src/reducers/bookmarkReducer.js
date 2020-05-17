@@ -3,17 +3,30 @@ import {
   REMOVE_BOOKMARK
 } from '../actions';
 
-const initialState = false;
+const initialState = [];
 
-const searchReducer = (state = initialState, action) => {
+const bookmarkReducer = (state = initialState, action) => {
+  let newState;
+
   switch (action.type) {
     case ADD_BOOKMARK:
-      return true;
+      newState = [...state, action.payload];
+      break;
     case REMOVE_BOOKMARK:
-      return false;
+      const found = state.findIndex(
+        (element) => element.id === action.payload.id
+      );
+      if (found !== -1) {
+        newState = [...state.slice(0, found), ...state.slice(found + 1)];
+      } else {
+        newState = [...state];
+      }
+      break;
     default:
-      return state;
+      newState = [...state];
   }
+
+  return newState;
 };
 
-export default searchReducer;
+export default bookmarkReducer;

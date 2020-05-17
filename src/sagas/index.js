@@ -23,6 +23,7 @@ function* inputWatcher() {
     yield fork(inputReducerTrigger, payload);
   }
 }
+
 export default function* rootSaga() {
   yield fork(inputWatcher);
 }

@@ -16,14 +16,16 @@ export const inputValueAsync = (value) => {
   };
 };
 
-export const addBookmark = () => {
+export const addBookmark = (character) => {
   return {
     type: ADD_BOOKMARK,
+    payload: character
   };
 }
 
-export const removeBookmark = () => {
+export const removeBookmark = (character) => {
   return {
     type: REMOVE_BOOKMARK,
+    payload: character
   };
 }
