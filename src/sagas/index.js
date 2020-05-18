@@ -10,8 +10,8 @@ import {
   inputValueSuccess
 } from '../actions';
 
-function* inputReducerTrigger(keyword) {
-  const characters = yield call(getCharacters, keyword);
+function* inputReducerTrigger(payload) {
+  const characters = yield call(getCharacters, payload);
   yield put(inputValueSuccess(characters));
 }
 

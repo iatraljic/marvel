@@ -9,10 +9,14 @@ export const inputValueSuccess = (value) => {
     payload: value,
   };
 };
-export const inputValueAsync = (value) => {
+
+export const inputValueAsync = (value, offset) => {
   return {
     type: INPUT_VALUE_ASYNC,
-    payload: value,
+    payload: {
+      value: value,
+      offset: offset
+    },
   };
 };
 

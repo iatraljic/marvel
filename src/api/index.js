@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-async function getCharacters(keyword) {
+async function getCharacters(payload) {
 
   let res = [];
-  if (keyword !== '') {
+  if (payload.value !== '') {
     res = await axios.get(
-      `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${keyword}&apikey=0a89d12143f7b81b682ba8a14d77c769`
+      `https://gateway.marvel.com:443/v1/public/characters?offset=${payload.offset}&nameStartsWith=${payload.value}&apikey=0a89d12143f7b81b682ba8a14d77c769`
     );
   } else {
     return res;
