@@ -3,7 +3,11 @@ import {
   REMOVE_BOOKMARK
 } from '../actions';
 
-const initialState = [];
+const initialState =
+  localStorage.marvel !== undefined ?
+  JSON.parse(localStorage.getItem('marvel')) :
+  [];
+
 
 const bookmarkReducer = (state = initialState, action) => {
   let newState;
@@ -26,6 +30,7 @@ const bookmarkReducer = (state = initialState, action) => {
       newState = [...state];
   }
 
+  localStorage.setItem('marvel', JSON.stringify(newState));
   return newState;
 };
 

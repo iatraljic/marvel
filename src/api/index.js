@@ -8,12 +8,11 @@ async function getCharacters(keyword) {
       `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${keyword}&apikey=0a89d12143f7b81b682ba8a14d77c769`
     );
   } else {
-    res = await axios.get(
-      `https://gateway.marvel.com:443/v1/public/characters?apikey=0a89d12143f7b81b682ba8a14d77c769`
-    );
+    return res;
   }
 
   return res.data.data;
+
 }
 
 export default getCharacters;

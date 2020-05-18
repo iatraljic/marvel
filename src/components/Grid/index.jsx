@@ -1,22 +1,16 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-
-import { inputValueAsync } from '../../actions';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 import Character from '../Character';
 
 function Grid() {
+  const bookmarkedCharacters = useSelector(store => store.bookmarkReducer);
   const characters = useSelector(store => store.searchReducer.results);
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(inputValueAsync(''));
-  }, []);
 
-  console.log(characters);
-
-  const showCharacters = () => {
-    const grid = characters.map(
+  const showCharacters = (gridCharacters) => {
+    
+    const grid = gridCharacters?.map(
       (el, index) => 
         <div
           className='col t-col m-col'
@@ -32,7 +26,8 @@ function Grid() {
   return (
     <div className="grid-container">
       {
-        characters && showCharacters()
+        characters?.length ?
+          showCharacters(characters) : showCharacters(bookmarkedCharacters)
       }
     </div>
   );
