@@ -8,6 +8,7 @@ import './index.css';
 function Grid() {
   const bookmarkedCharacters = useSelector(store => store.bookmarkReducer);
   const characters = useSelector(store => store.searchReducer.results);
+  const loader = useSelector(store => store.loaderReducer);
 
 
   const showCharacters = (gridCharacters) => {
@@ -32,7 +33,7 @@ function Grid() {
           showCharacters(characters) : showCharacters(bookmarkedCharacters)
       }
       {
-        !characters?.length && characters !== undefined &&
+        loader &&
         <div
           className="loader-container"
         >

@@ -9,6 +9,8 @@ import {
   INPUT_VALUE_ASYNC,
   inputValueSuccess,
   inputValueFailure,
+  loadingTrue,
+  loadingFalse,
 } from '../actions';
 
 function* inputReducerTrigger(payload) {
@@ -16,6 +18,7 @@ function* inputReducerTrigger(payload) {
   try {
     const characters =
       yield call(getCharacters, payload);
+    yield put(loadingFalse());
     yield put(inputValueSuccess(characters));
 
   } catch (error) {
@@ -34,6 +37,7 @@ function* inputWatcher() {
     const {
       payload
     } = yield take(INPUT_VALUE_ASYNC);
+    yield put(loadingTrue());
     yield fork(inputReducerTrigger, payload);
   }
 
