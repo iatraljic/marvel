@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux';
 
 import Character from '../Character';
 
+import './index.css';
+
 function Grid() {
   const bookmarkedCharacters = useSelector(store => store.bookmarkReducer);
   const characters = useSelector(store => store.searchReducer.results);
@@ -28,6 +30,17 @@ function Grid() {
       {
         characters?.length ?
           showCharacters(characters) : showCharacters(bookmarkedCharacters)
+      }
+      {
+        !characters?.length && characters !== undefined &&
+        <div
+          className="loader-container"
+        >
+          <div
+            className="loader"
+            style={{backgroundImage: 'url(./assets/loader.svg)'}}
+          ></div>
+        </div>
       }
     </div>
   );

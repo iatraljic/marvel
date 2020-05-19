@@ -19,7 +19,7 @@ function SearchBar() {
       pagination.push(
         <div
           key={i}
-          onClick={() => handleChange(-1, (i+1))}
+          onClick={() => handleChange(-1, (i))}
         >{i + 1}</div>
       );
     };
@@ -44,12 +44,16 @@ function SearchBar() {
       <input
         className='sb-input'
         type='text'
-        placeholder='Type a Marvel character'
+        placeholder='Search characters'
         onChange={(e) => handleChange(e.target.value, 0)}
       />
-      {
-        totalCharacters && showPagination()
-      }
+      <div
+        className="pagination"
+      >
+        {
+          totalCharacters && showPagination()
+        }
+      </div>
     </div>
   );
 };
