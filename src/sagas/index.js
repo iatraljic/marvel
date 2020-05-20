@@ -1,10 +1,4 @@
-import {
-  call,
-  put,
-  fork,
-  take,
-  delay,
-} from 'redux-saga/effects';
+import { call, put, fork, take, cancel } from 'redux-saga/effects';
 import getCharacters from '../api';
 import {
   INPUT_VALUE_ASYNC,
@@ -29,14 +23,28 @@ function* inputReducerTrigger(payload) {
 };
 
 function* inputWatcher() {
+    let task = null;
+    let oldPayload = {
+      value: null,
+      offset: -1,
+    };
+
 
   while (true) {
     const {
       payload
     } = yield take(INPUT_VALUE_ASYNC); 
+
+    if( task !== null && (oldPayload.value !== payload.value || oldPayload.offset !== payload.offset)) {
+      oldPayload = {
+        ...payload
+      };
+      yield cancel(task);
+    }
+
     
     yield put(loadingTrue());
-    yield fork(inputReducerTrigger, payload);
+    task = yield fork(inputReducerTrigger, payload);
   }
 
 };
