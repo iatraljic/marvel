@@ -1,9 +1,8 @@
 .loader-container {
   display: flex;
   justify-content: center;
-  align-content: center;
-  width: 100vw;
-  height: 80vh;
+  align-items: center;
+  width: 100%;
 }
 
 .loader{

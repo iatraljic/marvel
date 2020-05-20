@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Grid from '../../components/Grid';
-import SearchBar from '../../components/SearchBar';
+import Header from '../../components/Header';
 
 import './index.css';
 
@@ -9,7 +9,7 @@ import './index.css';
 function Home() {
   return (
     <>
-      <SearchBar />
+      <Header />
       <Grid/>
     </>
   );
