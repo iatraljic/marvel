@@ -23,7 +23,7 @@ function Header() {
             pageNum === i + 1 ? "page-number active-pn" : "page-number"
           }
           key={i}
-          onClick={() => handleChange(-1, (i), 'Click')}
+          onClick={() => handleClick(i)}
         >{i + 1}</div>
       );
     };
@@ -31,19 +31,16 @@ function Header() {
     return pagination;
   }
 
-  const handleChange = (e, offset, type) => {
+  const handleChange = (value, offset, type) => {
+    setSearchFilter(value);
+    dispatch(inputValueAsync(value, offset * 20));
+  };
 
-    if (offset + 1 !== pageNum || type !== 'Click') {
+  const handleClick = (offset) => {
+    if (offset + 1 !== pageNum) {
       setPageNum(offset + 1);
-
-      if (e !== -1) {
-        setSearchFilter(e);
-        dispatch(inputValueAsync(e, offset * 20));
-      } else {
-        dispatch(inputValueAsync(searchFilter, offset * 20));
-      }
+      dispatch(inputValueAsync(searchFilter, offset * 20));
     }
-    
   };
 
   return (
@@ -57,14 +54,14 @@ function Header() {
           className='sb-input'
           type='text'
           placeholder='Explore characters'
-          onChange={(e) => handleChange(e.target.value, 0, 'Input')}
+          onChange={(e) => handleChange(e.target.value, 0)}
         />
       </div>
       <div
         className="pagination"
       >
         {
-          totalCharacters && showPagination()
+          totalCharacters ? showPagination() : <></>
         }
       </div>
     </div>
