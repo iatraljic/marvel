@@ -11,12 +11,11 @@
   height: 50px;
   display: flex;
   align-items: flex-end;
-  justify-content: space-between;
   position: relative;
 }
 
 .sb-input {
-  width: 85%;
+  width: calc(100% - 150px);
   border: 0;
   padding-bottom: 0.4375rem;
   border-radius: 0;
@@ -29,8 +28,8 @@
 }
 
 .app-logo {
-  height: 100%;
-  width: 15%;
+  height: 51px;
+  width: 150px;
   background-repeat: no-repeat;
 }
 
@@ -44,7 +43,7 @@
   background-color: black;
   color: white;
   text-align: center;
-  width: 2vw;
+  width: 18;
   border: 1px solid;
 }
 
@@ -55,16 +54,6 @@
 .active-pn{
   background-color: red;
   color: white;
-}
-
-@media (max-width: 767px) {
-  .sb-input {
-    width: 78%;
-  }
-
-  .app-logo {
-    width: 22%;
-  }
 }
 
 @media (max-width: 480px) {
@@ -92,10 +81,6 @@
     display: flex;
     justify-content: flex-start;
     font-size: 10px;
-  }
-
-  .page-number {
-    width: 14px;
   }
 }
 
